@@ -2,40 +2,70 @@
     "all": {
         "include": {
             "all": [
-	        "cockpit-bridge",
-		"ddccontrol", 
-		"ddccontrol-db", 
-		"ddccontrol-gtk",
-		"fish",
+                "ddccontrol",
+                "ddccontrol-db",
+                "ddccontrol-gtk",
+                "cockpit-bridge",
+                "cockpit-bridge",
+                "cockpit-system",
+                "cockpit-ostree",
+                "cockpit-networkmanager",
+                "cockpit-selinux",
+                "cockpit-storaged",
+                "cockpit-podman",
+                "cockpit-machines",
+                "cockpit-pcp",
                 "gnome-shell-extension-appindicator",
                 "gnome-shell-extension-dash-to-dock",
                 "gnome-shell-extension-blur-my-shell",
-                "gnome-shell-extension-gsconnect",
-                "input-remapper",
                 "libgda",
                 "libgda-sqlite",
                 "libratbag-ratbagd",
-		"nautilus-gsconnect",
-		"pulseaudio-utils",
+                "pulseaudio-utils",
                 "python3-pip",
-		"samba",
-		"samba-ldb-ldap-modules", 
-		"samba-dcerpc",
-		"samba-winbind-clients",
-		"samba-winbind-modules",
+                "samba",
+                "samba-ldb-ldap-modules",
+                "samba-dcerpc",
+                "samba-winbind-clients",
+                "samba-winbind-modules",
                 "tailscale",
-		"tmux",
-                "wireguard-tools",
-                "xprop",
-                "yaru-theme",
-		"zsh"
+                "tmux",
+                "zsh",
+                "code",
+                "code-insiders",
+                "podman-compose",
+                "podman-docker",
+                "podman-plugins",
+                "adobe-source-code-pro-fonts",
+                "jetbrainsmono-nerd-fonts",
+                "google-droid-sans-mono-fonts",
+                "google-go-mono-fonts",
+                "ibm-plex-mono-fonts",
+                "jetbrains-mono-fonts-all",
+                "mozilla-fira-mono-fonts",
+                "powerline-fonts",
+                "gh",
+                "evolution",
+                "evolution-ews",
+                "fzf",
+                "ripgrep",
+                "bat",
+                "adw-gtk3-theme",
+                "awscli2",
+                "qemu",
+                "qemu-user-static",
+                "qemu-user-binfmt",
+                "virt-manager",
+                "libvirt",
+                "edk2-ovmf",
+                "pre-commit",
+                "python3",
+                "kubernetes-client"
             ]
         },
         "exclude": {
             "all": [
-                "firefox",
-                "firefox-langpacks",
-	        "gnome-software-rpm-ostree", 
+                "gnome-software-rpm-ostree",
                 "gnome-tour"
             ]
         }
@@ -46,8 +76,8 @@
         },
         "exclude": {
             "all": [
-	        "podman-docker"
-	    ]
+                "podman-docker"
+            ]
         }
     }
 }
