@@ -1,51 +1,16 @@
 {
 	"all": {
 		"include": {
-			"bluefin": [
-				"bash-color-prompt",
-				"cockpit-bridge",
-				"evtest",
-				"fish",
-				"firewall-config",
-				"glow",
-				"gum",
-				"gnome-shell-extension-appindicator",
-				"gnome-shell-extension-blur-my-shell",
-				"gnome-shell-extension-dash-to-dock",
-				"gnome-shell-extension-gsconnect",
-				"gnome-shell-extension-logo-menu",
-				"hplip",
-				"ifuse",
-				"input-remapper",
-				"libgda-sqlite",
-				"libgda",
-				"libimobiledevice",
-				"libratbag-ratbagd",
-				"libxcrypt-compat",
-				"make",
-				"mesa-libGLU",
-				"nautilus-gsconnect",
-				"playerctl",
-				"pulseaudio-utils",
-				"python3-pip",
-				"samba-dcerpc",
-				"samba-ldb-ldap-modules",
-				"samba-winbind-clients",
-				"samba-winbind-modules",
-				"samba",
-				"solaar",
-				"stress-ng",
-				"tailscale",
-				"tmux",
-				"usbmuxd",
-				"wireguard-tools",
-				"xprop",
-				"yaru-theme",
-				"wl-clipboard", 
-				"zsh"
-			],
-			"bluefin-dx": [
+			"os": [
 				"adobe-source-code-pro-fonts",
+				"adw-gtk3-theme",
+				"ansible-lint",
+				"ansible",
+				"awscli2",
+				"bash-color-prompt",
+				"bat",
+				"binutils",
+				"cockpit-bridge",
 				"cockpit-machines",
 				"cockpit-networkmanager",
 				"cockpit-ostree",
@@ -54,39 +19,55 @@
 				"cockpit-selinux",
 				"cockpit-storaged",
 				"cockpit-system",
+				"code-insiders",
 				"code",
-				"containerd.io",
-				"dbus-x11",
-                "devpod",
-				"distrobuilder",
-				"docker-ce",
-				"docker-ce-cli",
+				"ddccontrol-db",
+				"ddccontrol-gtk",
+				"ddccontrol",
+				"diceware",
+				"diffstat",
 				"docker-buildx-plugin",
+				"docker-ce-cli",
+				"docker-ce",
 				"docker-compose-plugin",
 				"edk2-ovmf",
-				"genisoimage",
+				"evolution-ews",
+				"evolution",
+				"fzf",
+				"gh",
+				"glow",
+				"gnome-calculator",
+				"gnome-shell-extension-appindicator",
+				"gnome-shell-extension-blur-my-shell",
+				"gnome-shell-extension-dash-to-dock",
 				"google-droid-sans-mono-fonts",
 				"google-go-mono-fonts",
+				"gum",
 				"ibm-plex-mono-fonts",
-				"incus",
-				"incus-agent",
 				"iotop",
 				"jetbrains-mono-fonts-all",
-				"kcli",
+				"kubernetes-client",
+				"libgda-sqlite",
+				"libgda",
+				"libratbag-ratbagd",
 				"libvirt",
-				"lxc",
-				"lxd-agent",
-				"lxd",
+				"lsd",
+				"morewaita-icon-theme",
 				"mozilla-fira-mono-fonts",
 				"nerd-fonts",
-				"p7zip-plugins",
-				"p7zip",
+				"nodejs",
+				"parallel",
+				"patch",
 				"podman-compose",
 				"podman-plugins",
-				"podman-tui",
-				"podmansh",
+				"poetry",
 				"powerline-fonts",
 				"powertop",
+				"pre-commit",
+				"pulseaudio-utils",
+				"python-argcomplete",
+				"python3-pip",
+				"python3",
 				"qemu-char-spice",
 				"qemu-device-display-virtio-gpu",
 				"qemu-device-display-virtio-vga",
@@ -96,54 +77,48 @@
 				"qemu-user-binfmt",
 				"qemu-user-static",
 				"qemu",
+				"ripgrep",
+				"samba-dcerpc",
+				"samba-ldb-ldap-modules",
+				"samba-winbind-clients",
+				"samba-winbind-modules",
+				"samba",
+				"tailscale",
+				"tldr",
+				"tmux",
 				"virt-manager",
-				"virt-viewer"
+				"virt-viewer",
+				"waypipe",
+				"wireguard-tools",
+				"wireshark",
+				"wl-clipboard",
+				"yt-dlp",
+				"zsh"
 			]
 		},
 		"exclude": {
-			"bluefin": [
-				"firefox-langpacks",
-				"firefox",
+			"os": [
 				"gnome-extensions-app",
-				"gnome-software-rpm-ostree",
 				"gnome-tour",
+				"podman-docker",
 				"ublue-os-update-services"
-			],
-			"bluefin-dx": []
+			]
 		}
 	},
 	"38": {
 		"include": {
-			"bluefin": [
-				"gnome-shell-extension-tailscale-status"
-			],
-			"bluefin-dx": [],
-			"bluefin-framework": []
+			"os": []
 		},
 		"exclude": {
-			"bluefin": [
-				"podman-docker"
-			],
-			"bluefin-dx": []
+			"os": []
 		}
 	},
 	"39": {
 		"include": {
-			"bluefin": [
-				"gnome-shell-extension-tailscale-gnome-qs",
-				"input-leap",
-                                "nautilus-open-any-terminal"
-			],
-			"bluefin-dx": [],
-			"bluefin-framework": []
+			"os": []
 		},
 		"exclude": {
-			"bluefin": [
-				"podman-docker",
-				"gnome-terminal-nautilus"
-			],
-			"bluefin-dx": [],
-			"bluefin-framework": []
+			"os": []
 		}
 	}
 }

@@ -1,6 +1,4 @@
-org.mozilla.firefox
 org.freedesktop.Platform.ffmpeg-full//22.08
-org.gnome.Calculator
 org.gnome.Calendar
 org.gnome.Characters
 org.gnome.Connections
@@ -17,8 +15,8 @@ org.gnome.clocks
 org.gnome.font-viewer
 com.mattjakeman.ExtensionManager
 com.github.tchx84.Flatseal
-io.github.flattool.Warehouse
 com.github.marhkb.Pods
 org.fedoraproject.MediaWriter
 io.missioncenter.MissionCenter
 io.github.celluloid_player.Celluloid
+dev.vencord.Vesktop

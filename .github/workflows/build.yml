@@ -1,18 +1,14 @@
 name: Build and Push Image
 on:
+  push:
+    branches:
+      - 'custom'
   schedule:
-    - cron: '40 16 * * *'  # 16:40 UTC everyday
+    - cron: '00 01 * * *'  # 10:00am everyday
   merge_group:
   pull_request:
     branches:
-      - main
-      - testing
-    paths-ignore:
-      - '**.md'
-  push:
-    branches:
-      - main
-      - testing
+      - custom
     paths-ignore:
       - '**.md'
   workflow_dispatch:
@@ -34,8 +30,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        image_flavor: [main, nvidia, asus, asus-nvidia, framework, surface, surface-nvidia]
-        base_name: [bluefin, bluefin-dx]
+        image_flavor: [main, nvidia]
+        base_name: [os]
         major_version: [38, 39]
         include:
           - major_version: 38
@@ -49,20 +45,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Verify base image
-        uses: EyeCantCU/cosign-action/verify@v0.2.2
-        with:
-          containers: silverblue-${{ matrix.image_flavor }}:${{ matrix.major_version }}
-
-      - name: Verify Chainguard images
-        if: matrix.base_name != 'bluefin'
-        uses: EyeCantCU/cosign-action/verify@v0.2.2
-        with:
-          containers: dive, flux, helm, ko, minio, kubectl
-          cert-identity: https://github.com/chainguard-images/images/.github/workflows/release.yaml@refs/heads/main
-          oidc-issuer: https://token.actions.githubusercontent.com
-          registry: cgr.dev/chainguard
 
       - name: Maximize build space
         uses: ublue-os/remove-unwanted-software@v6
@@ -106,16 +88,8 @@ jobs:
 
           BUILD_TAGS=("${MAJOR_VERSION}" "${MAJOR_VERSION}-${TIMESTAMP}")
 
-          if [[ ${{ github.ref_name }} == "testing" ]]; then
-             BUILD_TAGS=("${MAJOR_VERSION}-testing" "${MAJOR_VERSION}-testing-${TIMESTAMP}")
-             if [[ "${{ matrix.is_latest_version }}" == "true" ]] && \
-                [[ "${{ matrix.is_stable_version }}" == "true" ]]; then
-                 BUILD_TAGS+=("testing")
-             elif [[ "${{ matrix.is_gts_version }}" == "true" ]]; then
-                 BUILD_TAGS+=("gts-testing")
-             fi
-          elif [[ "${{ matrix.is_latest_version }}" == "true" ]] && \
-               [[ "${{ matrix.is_stable_version }}" == "true" ]]; then
+          if [[ "${{ matrix.is_latest_version }}" == "true" ]] && \
+             [[ "${{ matrix.is_stable_version }}" == "true" ]]; then
               BUILD_TAGS+=("latest")
           elif [[ "${{ matrix.is_gts_version }}" == "true" ]]; then
               BUILD_TAGS+=("gts")
@@ -152,9 +126,7 @@ jobs:
           labels: |
             org.opencontainers.image.title=${{ env.IMAGE_NAME }}
             org.opencontainers.image.version=${{ steps.labels.outputs.VERSION }}
-            org.opencontainers.image.description=An interpretation of the Ubuntu spirit built on Fedora technology 
-            io.artifacthub.package.readme-url=https://raw.githubusercontent.com/ublue-os/bluefin/bluefin/README.md
-            io.artifacthub.package.logo-url=https://avatars.githubusercontent.com/u/120078124?s=200&v=4
+            org.opencontainers.image.description=Fedora Silverblue with tweaks
 
       # Build image using Buildah action
       - name: Build Image
@@ -228,7 +200,7 @@ jobs:
       - name: Echo outputs
         if: github.event_name != 'pull_request'
         run: |
-          echo "${{ toJSON(steps.push.outputs) }}"  
+          echo "${{ toJSON(steps.push.outputs) }}"
 
   check:
     name: Check all builds successful

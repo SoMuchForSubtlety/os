@@ -1,0 +1,12 @@
+{
+    "dev.containers.dockerComposePath": "podman-compose",
+    "dev.containers.dockerPath": "podman",
+    "window.titleBarStyle": "custom",
+    "window.commandCenter": true,
+    "editor.fontFamily": "JetBrains Mono",
+    "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "diffEditor.hideUnchangedRegions.enabled": true,
+    "editor.fontLigatures": true,
+    "security.workspace.trust.untrustedFiles": "open",
+}
