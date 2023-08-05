@@ -60,7 +60,8 @@
                 "edk2-ovmf",
                 "pre-commit",
                 "python3",
-                "kubernetes-client"
+                "kubernetes-client",
+                "wl-clipboard"
             ]
         },
         "exclude": {
