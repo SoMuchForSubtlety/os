@@ -18,10 +18,6 @@ RUN /tmp/workarounds.sh
 
 COPY --from=cgr.dev/chainguard/cosign:latest /usr/bin/cosign /usr/bin/cosign
 
-RUN wget https://copr.fedorainfracloud.org/coprs/kylegospo/gnome-vrr/repo/fedora-"${FEDORA_MAJOR_VERSION}"/kylegospo-gnome-vrr-fedora-"${FEDORA_MAJOR_VERSION}".repo -O /etc/yum.repos.d/_copr_kylegospo-gnome-vrr.repo
-RUN rpm-ostree override replace --experimental --from repo=copr:copr.fedorainfracloud.org:kylegospo:gnome-vrr mutter gnome-control-center gnome-control-center-filesystem xorg-x11-server-Xwayland
-RUN rm -f /etc/yum.repos.d/_copr_kylegospo-gnome-vrr.repo
-
 ADD packages.json /tmp/packages.json
 ADD build.sh /tmp/build.sh
 
@@ -49,7 +45,6 @@ RUN /tmp/build.sh && \
     rm -f /etc/yum.repos.d/fedora-cisco-openh264.repo && \
     sed -i 's/#DefaultTimeoutStopSec.*/DefaultTimeoutStopSec=15s/' /etc/systemd/user.conf && \
     sed -i 's/#DefaultTimeoutStopSec.*/DefaultTimeoutStopSec=15s/' /etc/systemd/system.conf && \
-    sed -i '/^PRETTY_NAME/s/Silverblue/Bluefin/' /usr/lib/os-release && \
     rm -rf /tmp/* /var/* && \
     mkdir -p /var/tmp && \
     chmod -R 1777 /var/tmp
