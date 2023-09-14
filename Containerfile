@@ -19,16 +19,12 @@ COPY build.sh /tmp/build.sh
 COPY workarounds.sh /tmp/workarounds.sh
 RUN /tmp/workarounds.sh
 
-
 # add copr for morewaita-icon-theme
 RUN wget https://copr.fedorainfracloud.org/coprs/dusansimic/themes/repo/fedora-"${FEDORA_MAJOR_VERSION}"/dusansimic-themes-fedora-"${FEDORA_MAJOR_VERSION}".repo \
     -O /etc/yum.repos.d/_copr_dusansimic-themes.repo
 # nerd fonts repo
 RUN wget https://copr.fedorainfracloud.org/coprs/bobslept/nerd-fonts/repo/fedora-"${FEDORA_MAJOR_VERSION}"/bobslept-nerd-fonts-fedora-"${FEDORA_MAJOR_VERSION}".repo \
     -O /etc/yum.repos.d/bobslept-nerd-fonts-fedora-"${FEDORA_MAJOR_VERSION}".repo
-
-# FIXME: figure out why lens and openlens fail to install
-# RUN rpm-ostree install $(curl https://api.github.com/repos/MuhammedKalkan/OpenLens/releases/latest | jq -r '.assets[] | select(.name| test("^OpenLens.*x86_64.rpm$")).browser_download_url')
 
 RUN /tmp/build.sh && \
     pip install --prefix=/usr yafti && \
@@ -64,9 +60,13 @@ COPY --from=cgr.dev/chainguard/dive:latest /usr/bin/dive /usr/bin/dive
 COPY --from=cgr.dev/chainguard/pulumi:latest /usr/bin/pulumi /usr/bin/pulumi
 COPY --from=cgr.dev/chainguard/pulumi:latest /usr/bin/pulumi-language-nodejs /usr/bin/pulumi-language-nodejs
 
+RUN curl -Lo /tmp/bw-linux.zip "https://vault.bitwarden.com/download/?app=cli&platform=linux"
+RUN unzip -d /usr/bin /tmp/bw-linux.zip bw
+RUN chmod +x /usr/bin/bw
+
 RUN curl -Lo ./kind "https://github.com/kubernetes-sigs/kind/releases/latest/download/kind-$(uname)-amd64"
-RUN chmod +x ./kind
 RUN mv ./kind /usr/bin/kind
+RUN chmod +x /usr/bin/kind
 
 RUN systemctl enable podman.socket
 RUN systemctl disable pmie.service

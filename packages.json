@@ -69,7 +69,8 @@
                 "lsd",
                 "nodejs",
                 "bash-color-prompt",
-                "yt-dlp"
+                "yt-dlp",
+                "poetry"
             ]
         },
         "exclude": {
