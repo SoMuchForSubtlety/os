@@ -70,7 +70,8 @@
                 "nodejs",
                 "bash-color-prompt",
                 "yt-dlp",
-                "poetry"
+                "poetry",
+                "wireshark"
             ]
         },
         "exclude": {
