@@ -31,7 +31,6 @@
                 "tailscale",
                 "tmux",
                 "zsh",
-                "google-noto-sans-cjk-fonts",
                 "code",
                 "code-insiders",
                 "podman-compose",
@@ -76,7 +75,6 @@
         },
         "exclude": {
             "os": [
-                "google-noto-sans-cjk-vf-fonts",
                 "gnome-software-rpm-ostree",
                 "gnome-tour"
             ]
