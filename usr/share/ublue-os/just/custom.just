@@ -44,4 +44,4 @@ zsh:
   sudo lchsh $USER /usr/bin/zsh 
 
 devdeps:
-  sudo rpm-ostree install java-17-openjdk-devel java-17-openjdk-src golang maven
+  sudo rpm-ostree install java-17-openjdk-devel java-17-openjdk-src maven golang
