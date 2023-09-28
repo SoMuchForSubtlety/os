@@ -30,10 +30,6 @@ jobs:
             is_latest_version: true
             is_stable_version: true
     steps:
-      - name: Free Disk Space (Ubuntu)
-        # undo once this is merged https://github.com/jlumbroso/free-disk-space/pull/11
-        uses: hirnidrin/free-disk-space@main
-
       # Checkout push-to-registry action GitHub repository
       - name: Checkout Push to Registry action
         uses: actions/checkout@v4
