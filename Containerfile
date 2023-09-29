@@ -23,6 +23,8 @@ COPY optfix.sh /tmp/optfix.sh
 RUN /tmp/optfix.sh
 RUN cat /etc/yum.repos.d/google-chrome.repo
 RUN rpm-ostree install $(curl -s https://api.github.com/repos/MuhammedKalkan/OpenLens/releases/latest | jq -r '.assets[] | select(.name | test("^OpenLens.*x86_64.rpm$")).browser_download_url')
+# fix desktop file
+RUN sed -i 's+Exec=/opt/OpenLens/+Exec=/usr/bin/+g' /usr/share/applications/open-lens.desktop
 RUN sed -i 's/enabled=0/enabled=1/g' /etc/yum.repos.d/google-chrome.repo
 # see https://github.com/fedora-silverblue/issue-tracker/issues/408
 RUN sed -i 's/gpgcheck=1/gpgcheck=0/g' /etc/yum.repos.d/google-chrome.repo
