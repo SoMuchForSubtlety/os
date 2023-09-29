@@ -11,6 +11,7 @@ ARG FEDORA_MAJOR_VERSION="${FEDORA_MAJOR_VERSION}"
 ARG PACKAGE_LIST="os"
 
 COPY etc /etc
+COPY just /tmp/just
 COPY usr /usr
 COPY etc/yum.repos.d/ /etc/yum.repos.d/
 COPY packages.json /tmp/packages.json
@@ -50,7 +51,7 @@ RUN /tmp/build.sh && \
     systemctl enable dconf-update.service && \
     fc-cache -f /usr/share/fonts/inter && \
     fc-cache -f /usr/share/fonts/intelmono && \
-    ln -s "/usr/share/fonts/google-noto-sans-cjk-fonts" "/usr/share/fonts/noto-cjk" && \
+    find /tmp/just -iname '*.just' -exec printf "\n\n" \; -exec cat {} \; >> /usr/share/ublue-os/just/60-custom.just && \
     rm -f /usr/share/applications/fish.desktop && \
     rm -f /usr/share/applications/htop.desktop && \
     rm -f /usr/share/applications/nvtop.desktop && \

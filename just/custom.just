@@ -1,3 +1,5 @@
+# vim: set ft=make :
+
 # Enable Cockpit for web-based system management | https://cockpit-project.org/
 cockpit:
   echo 'Enabling Cockpit'
