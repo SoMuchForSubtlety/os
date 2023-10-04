@@ -66,7 +66,8 @@
                 "bash-color-prompt",
                 "yt-dlp",
                 "poetry",
-                "wireshark"
+                "wireshark",
+                "diceware"
             ]
         },
         "exclude": {
