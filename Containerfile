@@ -80,6 +80,10 @@ COPY --from=cgr.dev/chainguard/dive:latest /usr/bin/dive /usr/bin/dive
 COPY --from=cgr.dev/chainguard/pulumi:latest /usr/bin/pulumi /usr/bin/pulumi
 COPY --from=cgr.dev/chainguard/pulumi:latest /usr/bin/pulumi-language-nodejs /usr/bin/pulumi-language-nodejs
 
+# bash completions
+RUN pulumi completion bash > /usr/share/bash-completion/completions/pulumi
+RUN pulumi completion zsh > /usr/share/zsh/site-functions/_pulumi
+
 RUN curl -Lo /tmp/bw-linux.zip "https://vault.bitwarden.com/download/?app=cli&platform=linux"
 RUN unzip -d /usr/bin /tmp/bw-linux.zip bw
 RUN chmod +x /usr/bin/bw
