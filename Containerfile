@@ -66,6 +66,7 @@ RUN /tmp/build.sh && \
     rm -f /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:phracek:PyCharm.repo && \
     rm -f /etc/yum.repos.d/fedora-cisco-openh264.repo && \
     rm -f /etc/yum.repos.d/_copr_dusansimic-themes.repo && \
+    rm -f /etc/yum.repos.d/docker-ce.repo && \
     rm -f /etc/yum.repos.d/bobslept-nerd-fonts-fedora-"${FEDORA_MAJOR_VERSION}".repo && \
     sed -i 's/#DefaultTimeoutStopSec.*/DefaultTimeoutStopSec=15s/' /etc/systemd/user.conf && \
     sed -i 's/#DefaultTimeoutStopSec.*/DefaultTimeoutStopSec=15s/' /etc/systemd/system.conf && \
@@ -91,6 +92,9 @@ RUN chmod +x /usr/bin/bw
 RUN curl -Lo ./kind "https://github.com/kubernetes-sigs/kind/releases/latest/download/kind-$(uname)-amd64"
 RUN mv ./kind /usr/bin/kind
 RUN chmod +x /usr/bin/kind
+
+RUN wget https://github.com/docker/compose/releases/latest/download/docker-compose-linux-x86_64 -O /tmp/docker-compose && \
+    install -c -m 0755 /tmp/docker-compose /usr/bin
 
 RUN systemctl enable podman.socket
 RUN systemctl disable pmie.service

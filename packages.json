@@ -34,7 +34,6 @@
                 "code",
                 "code-insiders",
                 "podman-compose",
-                "podman-docker",
                 "podman-plugins",
                 "adobe-source-code-pro-fonts",
                 "jetbrainsmono-nerd-fonts",
@@ -67,13 +66,18 @@
                 "yt-dlp",
                 "poetry",
                 "wireshark",
-                "diceware"
+                "diceware",
+                "docker-ce",
+                "docker-ce-cli",
+                "docker-buildx-plugin",
+                "docker-compose-plugin"
             ]
         },
         "exclude": {
             "os": [
                 "gnome-software-rpm-ostree",
-                "gnome-tour"
+                "gnome-tour",
+                "podman-docker"
             ]
         }
     },
@@ -82,9 +86,7 @@
             "os": []
         },
         "exclude": {
-            "os": [
-                "podman-docker"
-            ]
+            "os": []
         }
     }
 }
