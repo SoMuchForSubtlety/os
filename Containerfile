@@ -84,6 +84,9 @@ COPY --from=cgr.dev/chainguard/pulumi:latest /usr/bin/pulumi-language-nodejs /us
 # bash completions
 RUN pulumi completion bash > /usr/share/bash-completion/completions/pulumi
 RUN pulumi completion zsh > /usr/share/zsh/site-functions/_pulumi
+RUN helm completion bash > /usr/share/bash-completion/completions/helm
+RUN helm completion zsh > /usr/share/zsh/site-functions/_helm
+
 
 RUN curl -Lo /tmp/bw-linux.zip "https://vault.bitwarden.com/download/?app=cli&platform=linux"
 RUN unzip -d /usr/bin /tmp/bw-linux.zip bw
