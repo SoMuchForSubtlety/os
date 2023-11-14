@@ -36,9 +36,6 @@ RUN ln -s /usr/lib/opt/OpenLens/open-lens /usr/bin/open-lens
 RUN rm /usr/bin/google-chrome-stable
 RUN ln -s /usr/lib/opt/google/chrome/google-chrome /usr/bin/google-chrome-stable
 
-
-RUN /tmp/workarounds.sh
-
 # add copr for morewaita-icon-theme
 RUN wget https://copr.fedorainfracloud.org/coprs/dusansimic/themes/repo/fedora-"${FEDORA_MAJOR_VERSION}"/dusansimic-themes-fedora-"${FEDORA_MAJOR_VERSION}".repo \
     -O /etc/yum.repos.d/_copr_dusansimic-themes.repo
@@ -70,9 +67,13 @@ RUN /tmp/build.sh && \
     rm -f /etc/yum.repos.d/bobslept-nerd-fonts-fedora-"${FEDORA_MAJOR_VERSION}".repo && \
     sed -i 's/#DefaultTimeoutStopSec.*/DefaultTimeoutStopSec=15s/' /etc/systemd/user.conf && \
     sed -i 's/#DefaultTimeoutStopSec.*/DefaultTimeoutStopSec=15s/' /etc/systemd/system.conf && \
-    rm -rf /tmp/* /var/* && \
     mkdir -p /var/tmp && \
     chmod -R 1777 /var/tmp
+
+# manually add symlinks for alternatives, see https://github.com/coreos/rpm-ostree/issues/1614
+RUN /tmp/workarounds.sh
+# cleanup
+RUN rm -rf /tmp/* /var/*
 
 COPY --from=cgr.dev/chainguard/flux:latest /usr/bin/flux /usr/bin/flux
 COPY --from=cgr.dev/chainguard/helm:latest /usr/bin/helm /usr/bin/helm
