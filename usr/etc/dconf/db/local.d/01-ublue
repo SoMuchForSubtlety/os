@@ -1,5 +1,5 @@
 [org/gnome/shell] 
-enabled-extensions = ['appindicatorsupport@rgcjonas.gmail.com', 'blur-my-shell@aunetx', 'activities-filled-pill@verdre']
+enabled-extensions = ['appindicatorsupport@rgcjonas.gmail.com', 'blur-my-shell@aunetx']
 
 [org/gnome/desktop/interface]
 enable-hot-corners=false

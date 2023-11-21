@@ -26,7 +26,7 @@ jobs:
         base_name: [os]
         major_version: [38, 39]
         include:
-          - major_version: 38
+          - major_version: 39
             is_latest_version: true
             is_stable_version: true
     steps:
