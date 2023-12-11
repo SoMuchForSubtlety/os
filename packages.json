@@ -4,6 +4,8 @@
             "os": [
 				"adobe-source-code-pro-fonts",
 				"adw-gtk3-theme",
+				"ansible",
+				"ansible-lint",
 				"awscli2",
 				"bash-color-prompt",
 				"bat",
@@ -64,6 +66,7 @@
 				"pulseaudio-utils",
 				"python3",
 				"python3-pip",
+				"python-argcomplete",
 				"qemu",
 				"qemu-char-spice",
 				"qemu-device-display-virtio-gpu",
