@@ -118,6 +118,7 @@ RUN wget https://copr.fedorainfracloud.org/coprs/ublue-os/bling/repo/fedora-$(rp
 
 # patch vscode to use wayland
 RUN patch /usr/share/code/bin/code /tmp/patches/code.patch
+RUN patch /usr/share/applications/code.desktop /tmp/patches/code.desktop.patch
 
 # manually add symlinks for alternatives, see https://github.com/coreos/rpm-ostree/issues/1614
 RUN /tmp/workarounds.sh
