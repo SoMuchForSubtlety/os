@@ -156,7 +156,10 @@ RUN helm completion bash > /usr/share/bash-completion/completions/helm
 RUN helm completion zsh > /usr/share/zsh/site-functions/_helm
 RUN talosctl completion bash > /usr/share/bash-completion/completions/talosctl
 RUN talosctl completion zsh > /usr/share/zsh/site-functions/_talosctl
+# bitwarden attempts to create a directory for a config file in /root, but that's a symlink to /var/roothome
+RUN mkdir -p "/var/roothome/.config/Bitwarden CLI"
 run bw completion --shell zsh > /usr/share/zsh/site-functions/_bw
+RUN rm -rf "/var/roothome/.config/Bitwarden CLI"
 
 # Set up services
 RUN systemctl enable podman.socket && \
