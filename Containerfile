@@ -26,6 +26,7 @@ COPY build.sh /tmp/build.sh
 COPY image-info.sh /tmp/image-info.sh
 COPY workarounds.sh /tmp/workarounds.sh
 COPY optfix.sh /tmp/optfix.sh
+COPY apply-patches.sh /tmp/apply-patches.sh
 COPY patches patches/ /tmp/patches/
 
 # Copy ublue-update.toml to tmp first, to avoid being overwritten.
@@ -55,12 +56,9 @@ RUN sed -i 's@enabled=0@enabled=1@g' /etc/yum.repos.d/_copr_ublue-os-akmods.repo
 RUN /tmp/optfix.sh
 RUN cat /etc/yum.repos.d/google-chrome.repo
 RUN rpm-ostree install $(curl -s https://api.github.com/repos/MuhammedKalkan/OpenLens/releases/latest | jq -r '.assets[] | select(.name | test("^OpenLens.*x86_64.rpm$")).browser_download_url')
-# fix desktop file
-RUN sed -i 's+Exec=/opt/OpenLens/+Exec=/usr/bin/+g' /usr/share/applications/open-lens.desktop
-RUN sed -i 's/enabled=0/enabled=1/g' /etc/yum.repos.d/google-chrome.repo
 # see https://github.com/fedora-silverblue/issue-tracker/issues/408
+RUN sed -i 's/enabled=0/enabled=1/g' /etc/yum.repos.d/google-chrome.repo
 RUN sed -i 's/gpgcheck=1/gpgcheck=0/g' /etc/yum.repos.d/google-chrome.repo
-RUN cat /etc/yum.repos.d/google-chrome.repo
 RUN rpm-ostree install google-chrome-stable
 # fix symlinks pointing to /opt
 RUN rm /usr/bin/open-lens
@@ -116,9 +114,8 @@ RUN wget https://copr.fedorainfracloud.org/coprs/ublue-os/bling/repo/fedora-$(rp
     mkdir -p /var/tmp && \
     chmod -R 1777 /var/tmp
 
-# patch vscode to use wayland
-RUN patch /usr/share/code/bin/code /tmp/patches/code.patch
-RUN patch /usr/share/applications/code.desktop /tmp/patches/code.desktop.patch
+# apply patches
+RUN /tmp/apply-patches.sh
 
 # manually add symlinks for alternatives, see https://github.com/coreos/rpm-ostree/issues/1614
 RUN /tmp/workarounds.sh
