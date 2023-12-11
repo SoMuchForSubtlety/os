@@ -57,6 +57,7 @@
 				"morewaita-icon-theme",
 				"mozilla-fira-mono-fonts",
 				"nodejs",
+				"patch",
 				"podman-compose",
 				"podman-plugins",
 				"poetry",

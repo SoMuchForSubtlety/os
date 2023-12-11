@@ -26,6 +26,8 @@ COPY build.sh /tmp/build.sh
 COPY image-info.sh /tmp/image-info.sh
 COPY workarounds.sh /tmp/workarounds.sh
 COPY optfix.sh /tmp/optfix.sh
+COPY patches patches/ /tmp/patches/
+
 # Copy ublue-update.toml to tmp first, to avoid being overwritten.
 COPY usr/etc/ublue-update/ublue-update.toml /tmp/ublue-update.toml
 
@@ -114,6 +116,8 @@ RUN wget https://copr.fedorainfracloud.org/coprs/ublue-os/bling/repo/fedora-$(rp
     mkdir -p /var/tmp && \
     chmod -R 1777 /var/tmp
 
+# patch vscode to use wayland
+RUN patch /usr/share/code/bin/code /tmp/patches/code.patch
 
 # manually add symlinks for alternatives, see https://github.com/coreos/rpm-ostree/issues/1614
 RUN /tmp/workarounds.sh
