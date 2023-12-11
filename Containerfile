@@ -149,7 +149,7 @@ RUN wget https://raw.githubusercontent.com/ahmetb/kubectx/master/kubectx -O /usr
 RUN systemctl enable podman.socket && \
     systemctl disable pmie.service && \
     systemctl disable pmlogger.service
-RUN /tmp/workarounds.sh
+
 RUN wget https://github.com/docker/compose/releases/latest/download/docker-compose-linux-x86_64 -O /tmp/docker-compose && \
     install -c -m 0755 /tmp/docker-compose /usr/bin
 
