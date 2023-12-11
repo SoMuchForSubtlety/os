@@ -127,17 +127,12 @@ COPY --from=cgr.dev/chainguard/dive:latest /usr/bin/dive /usr/bin/dive
 COPY --from=cgr.dev/chainguard/pulumi:latest /usr/bin/pulumi /usr/bin/pulumi
 COPY --from=cgr.dev/chainguard/pulumi:latest /usr/bin/pulumi-language-nodejs /usr/bin/pulumi-language-nodejs
 
-# bash completions
-RUN pulumi completion bash > /usr/share/bash-completion/completions/pulumi
-RUN pulumi completion zsh > /usr/share/zsh/site-functions/_pulumi
-RUN helm completion bash > /usr/share/bash-completion/completions/helm
-RUN helm completion zsh > /usr/share/zsh/site-functions/_helm
-
-
+# install bw cli
 RUN curl -Lo /tmp/bw-linux.zip "https://vault.bitwarden.com/download/?app=cli&platform=linux"
 RUN unzip -d /usr/bin /tmp/bw-linux.zip bw
 RUN chmod +x /usr/bin/bw
 
+# install kind
 RUN curl -Lo ./kind "https://github.com/kubernetes-sigs/kind/releases/latest/download/kind-$(uname)-amd64" && \
     chmod +x ./kind && \
     mv ./kind /usr/bin/kind
@@ -145,6 +140,24 @@ RUN curl -Lo ./kind "https://github.com/kubernetes-sigs/kind/releases/latest/dow
 RUN wget https://raw.githubusercontent.com/ahmetb/kubectx/master/kubectx -O /usr/bin/kubectx && \
     wget https://raw.githubusercontent.com/ahmetb/kubectx/master/kubens -O /usr/bin/kubens && \
     chmod +x /usr/bin/kubectx /usr/bin/kubens
+# install talosctl
+RUN curl -Lo ./talosctl "https://github.com/siderolabs/talos/releases/latest/download/talosctl-linux-amd64" && \
+    chmod +x ./talosctl && \
+    mv ./talosctl /usr/bin/talosctl
+# install sops
+RUN curl -Lo ./sops $(curl -s https://api.github.com/repos/getsops/sops/releases/latest | jq -r '.assets[] | select(.name | test("linux.amd64$")).browser_download_url') && \
+    chmod +x ./sops && \
+    mv ./sops /usr/bin/sops
+
+# shell completions
+RUN pulumi completion bash > /usr/share/bash-completion/completions/pulumi
+RUN pulumi completion zsh > /usr/share/zsh/site-functions/_pulumi
+RUN helm completion bash > /usr/share/bash-completion/completions/helm
+RUN helm completion zsh > /usr/share/zsh/site-functions/_helm
+RUN talosctl completion bash > /usr/share/bash-completion/completions/talosctl
+RUN talosctl completion zsh > /usr/share/zsh/site-functions/_talosctl
+run bw completion --shell zsh > /usr/share/zsh/site-functions/_bw
+
 # Set up services
 RUN systemctl enable podman.socket && \
     systemctl disable pmie.service && \
