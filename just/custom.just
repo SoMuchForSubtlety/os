@@ -14,7 +14,7 @@ cockpit:
 # Install recommended GNOME extensions
 gnome-extensions:
     pip install --upgrade gnome-extensions-cli
-    gext install tailscale-status@maxgallup.github.com
+    gext install tailscale@joaophi.github.com
     gext install pano@elhan.io
     gext install weatheroclock@CleoMenezesJr.github.io
 
