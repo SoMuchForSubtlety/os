@@ -1,7 +1,7 @@
 {
-    "all": {
-        "include": {
-            "os": [
+	"all": {
+		"include": {
+			"os": [
 				"adobe-source-code-pro-fonts",
 				"adw-gtk3-theme",
 				"ansible",
@@ -84,6 +84,7 @@
 				"samba-winbind-clients",
 				"samba-winbind-modules",
 				"tailscale",
+				"tldr",
 				"tmux",
 				"ublue-update",
 				"virt-manager",
@@ -93,34 +94,34 @@
 				"wl-clipboard",
 				"yt-dlp",
 				"zsh"
-            ]
-        },
-        "exclude": {
-            "os": [
-				"gnome-extensions-app",
-                "gnome-software-rpm-ostree",
-                "gnome-tour",
-                "podman-docker",
-				"ublue-os-update-services"            
 			]
-        }
-    },
-    "38": {
-        "include": {
-            "os": []
-        },
-        "exclude": {
-            "os": []
-        }
-    },
-    "39": {
-        "include": {
-            "os": [
+		},
+		"exclude": {
+			"os": [
+				"gnome-extensions-app",
+				"gnome-software-rpm-ostree",
+				"gnome-tour",
+				"podman-docker",
+				"ublue-os-update-services"
+			]
+		}
+	},
+	"38": {
+		"include": {
+			"os": []
+		},
+		"exclude": {
+			"os": []
+		}
+	},
+	"39": {
+		"include": {
+			"os": [
 				"input-leap"
 			]
-        },
-        "exclude": {
-            "os": []
-        }
-    }
+		},
+		"exclude": {
+			"os": []
+		}
+	}
 }
