@@ -150,7 +150,11 @@ RUN curl -Lo ./talosctl "https://github.com/siderolabs/talos/releases/latest/dow
 RUN curl -Lo ./sops $(curl -s https://api.github.com/repos/getsops/sops/releases/latest | jq -r '.assets[] | select(.name | test("linux.amd64$")).browser_download_url') && \
     chmod +x ./sops && \
     mv ./sops /usr/bin/sops
-
+# install yq
+RUN curl -Lo ./yq "https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64" && \
+    chmod +x ./yq && \
+    mv ./yq /usr/bin/yq
+    
 # shell completions
 RUN pulumi completion bash > /usr/share/bash-completion/completions/pulumi
 RUN pulumi completion zsh > /usr/share/zsh/site-functions/_pulumi
@@ -161,6 +165,8 @@ RUN talosctl completion zsh > /usr/share/zsh/site-functions/_talosctl
 RUN flux completion bash > /usr/share/bash-completion/completions/flux
 RUN flux completion zsh > /usr/share/zsh/site-functions/_flux
 RUN kubectl completion zsh > /usr/share/zsh/site-functions/_kubectl
+RUN yq shell-completion bash > /usr/share/bash-completion/completions/yq
+RUN yq shell-completion zsh > /usr/share/zsh/site-functions/_yq
 # bitwarden attempts to create a directory for a config file in /root, but that's a symlink to /var/roothome
 RUN mkdir -p "/var/roothome/.config/Bitwarden CLI"
 run bw completion --shell zsh > /usr/share/zsh/site-functions/_bw
