@@ -155,7 +155,8 @@ RUN curl -Lo ./yq "https://github.com/mikefarah/yq/releases/latest/download/yq_l
     chmod +x ./yq && \
     mv ./yq /usr/bin/yq
 # install crd2pulumi
-RUN curl -Lo ./crd2pulumi "https://github.com/pulumi/crd2pulumi/releases/download/v1.3.0/crd2pulumi-v1.3.0-linux-amd64.tar.gz" && \
+RUN curl -Lo ./crd2pulumi $(curl -s https://api.github.com/repos/pulumi/crd2pulumi/releases/latest | jq -r '.assets[] | select(.name | test("linux-amd64")).browser_download_url') && \
+    tar xf crd2pulumi --wildcards crd2pulumi && \
     chmod +x ./crd2pulumi && \
     mv ./crd2pulumi /usr/bin/crd2pulumi
     
