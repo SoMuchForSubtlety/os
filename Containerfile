@@ -154,10 +154,16 @@ RUN curl -Lo ./sops $(curl -s https://api.github.com/repos/getsops/sops/releases
 RUN curl -Lo ./yq "https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64" && \
     chmod +x ./yq && \
     mv ./yq /usr/bin/yq
+# install crd2pulumi
+RUN curl -Lo ./crd2pulumi "https://github.com/pulumi/crd2pulumi/releases/download/v1.3.0/crd2pulumi-v1.3.0-linux-amd64.tar.gz" && \
+    chmod +x ./crd2pulumi && \
+    mv ./crd2pulumi /usr/bin/crd2pulumi
     
 # shell completions
 RUN pulumi completion bash > /usr/share/bash-completion/completions/pulumi
 RUN pulumi completion zsh > /usr/share/zsh/site-functions/_pulumi
+RUN crd2pulumi completion bash > /usr/share/bash-completion/completions/crd2pulumi
+RUN crd2pulumi completion zsh > /usr/share/zsh/site-functions/_crd2pulumi
 RUN helm completion bash > /usr/share/bash-completion/completions/helm
 RUN helm completion zsh > /usr/share/zsh/site-functions/_helm
 RUN talosctl completion bash > /usr/share/bash-completion/completions/talosctl
