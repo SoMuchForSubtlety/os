@@ -159,7 +159,10 @@ RUN curl -Lo ./crd2pulumi $(curl -s https://api.github.com/repos/pulumi/crd2pulu
     tar xf crd2pulumi --wildcards crd2pulumi && \
     chmod +x ./crd2pulumi && \
     mv ./crd2pulumi /usr/bin/crd2pulumi
-    
+# install goldwarden
+RUN rpm-ostree install $(curl -s https://api.github.com/repos/quexten/goldwarden/releases/latest | jq -r '.assets[] | select(.name | test("^goldwarden.*x86_64.rpm$")).browser_download_url')
+
+# TODO: automate this
 # shell completions
 RUN pulumi completion bash > /usr/share/bash-completion/completions/pulumi
 RUN pulumi completion zsh > /usr/share/zsh/site-functions/_pulumi
@@ -174,6 +177,8 @@ RUN flux completion zsh > /usr/share/zsh/site-functions/_flux
 RUN kubectl completion zsh > /usr/share/zsh/site-functions/_kubectl
 RUN yq shell-completion bash > /usr/share/bash-completion/completions/yq
 RUN yq shell-completion zsh > /usr/share/zsh/site-functions/_yq
+RUN goldwarden shell-completion bash > /usr/share/bash-completion/completions/goldwarden
+RUN goldwarden shell-completion zsh > /usr/share/zsh/site-functions/_goldwarden
 # bitwarden attempts to create a directory for a config file in /root, but that's a symlink to /var/roothome
 RUN mkdir -p "/var/roothome/.config/Bitwarden CLI"
 run bw completion --shell zsh > /usr/share/zsh/site-functions/_bw
