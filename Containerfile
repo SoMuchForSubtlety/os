@@ -179,6 +179,8 @@ RUN yq shell-completion bash > /usr/share/bash-completion/completions/yq
 RUN yq shell-completion zsh > /usr/share/zsh/site-functions/_yq
 RUN goldwarden completion bash > /usr/share/bash-completion/completions/goldwarden
 RUN goldwarden completion zsh > /usr/share/zsh/site-functions/_goldwarden
+RUN eksctl completion bash >  /usr/share/bash-completion/completions/eksctl
+RUN eksctl completion zsh > /usr/share/zsh/site-functions/_eksctl
 # bitwarden attempts to create a directory for a config file in /root, but that's a symlink to /var/roothome
 RUN mkdir -p "/var/roothome/.config/Bitwarden CLI"
 run bw completion --shell zsh > /usr/share/zsh/site-functions/_bw
