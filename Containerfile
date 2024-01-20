@@ -159,6 +159,9 @@ RUN curl -Lo ./crd2pulumi $(curl -s https://api.github.com/repos/pulumi/crd2pulu
     tar xf crd2pulumi --wildcards crd2pulumi && \
     chmod +x ./crd2pulumi && \
     mv ./crd2pulumi /usr/bin/crd2pulumi
+# install eksctl
+RUN curl -s -L "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_Linux_amd64.tar.gz" | tar -xzf - && \
+    mv ./eksctl /usr/bin/eksctl
 # install goldwarden
 RUN rpm-ostree install $(curl -s https://api.github.com/repos/quexten/goldwarden/releases/latest | jq -r '.assets[] | select(.name | test("^goldwarden.*x86_64.rpm$")).browser_download_url')
 
