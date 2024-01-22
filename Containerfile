@@ -134,6 +134,11 @@ RUN curl -Lo /tmp/bw-linux.zip "https://vault.bitwarden.com/download/?app=cli&pl
 RUN unzip -d /usr/bin /tmp/bw-linux.zip bw
 RUN chmod +x /usr/bin/bw
 
+# install ksh
+RUN git clone "https://github.com/samox73/ksh.git" && \
+    cd ksh && go build . && \
+    mv ./ksh /usr/bin/ksh
+
 # install kind
 RUN curl -Lo ./kind "https://github.com/kubernetes-sigs/kind/releases/latest/download/kind-$(uname)-amd64" && \
     chmod +x ./kind && \
