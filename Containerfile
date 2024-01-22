@@ -135,8 +135,8 @@ RUN unzip -d /usr/bin /tmp/bw-linux.zip bw
 RUN chmod +x /usr/bin/bw
 
 # install ksh
-RUN git clone "https://github.com/samox73/ksh.git" && \
-    cd ksh && go build . && \
+RUN curl -Lo ./ksh "https://github.com/samox73/ksh/releases/latest/download/ksh" && \
+    chmod +x ./ksh && \
     mv ./ksh /usr/bin/ksh
 
 # install kind
