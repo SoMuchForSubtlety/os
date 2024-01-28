@@ -2,7 +2,7 @@
 
 set -oeux pipefail
 
-commands=("pulumi" "crd2pulumi" "helm" "talosctl" "flux" "goldwarden" "eksctl" "kubectl")
+commands=("pulumi" "crd2pulumi" "helm" "talosctl" "flux" "goldwarden" "eksctl")
 for command in "${commands[@]}"; do
     $command completion bash > /usr/share/bash-completion/completions/"$command"
     $command completion zsh > /usr/share/zsh/site-functions/_"$command"
