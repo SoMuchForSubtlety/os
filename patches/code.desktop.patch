@@ -1,0 +1,18 @@
+--- /usr/share/applications/code.desktop	1970-01-01 01:00:00.000000000 +0100
++++ desktop.patched	2023-12-11 21:44:19.008378620 +0100
+@@ -2,7 +2,7 @@
+ Name=Visual Studio Code
+ Comment=Code Editing. Redefined.
+ GenericName=Text Editor
+-Exec=/usr/share/code/code --unity-launch %F
++Exec=/usr/share/code/code --unity-launch %F --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto
+ Icon=vscode
+ Type=Application
+ StartupNotify=false
+@@ -23,5 +23,5 @@
+ Name[ru]=Новое пустое окно
+ Name[zh_CN]=新建空窗口
+ Name[zh_TW]=開新空視窗
+-Exec=/usr/share/code/code --new-window %F
++Exec=/usr/share/code/code --new-window %F --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto
+ Icon=vscode
