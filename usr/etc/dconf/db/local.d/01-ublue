@@ -64,3 +64,10 @@ show-indicator=false
 [org/gnome/shell/extensions/pano/text-item]
 body-bg-color='rgb(141,141,143)'
 header-bg-color='rgb(50,58,68)'
+
+[org/gnome/desktop/screensaver]
+lock-delay=uint32 300
+lock-enabled=true
+
+[org/gnome/desktop/session]
+idle-delay=uint32 300
