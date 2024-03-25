@@ -66,7 +66,7 @@ body-bg-color='rgb(141,141,143)'
 header-bg-color='rgb(50,58,68)'
 
 [org/gnome/desktop/screensaver]
-lock-delay=uint32 300
+lock-delay=uint32 0
 lock-enabled=true
 
 [org/gnome/desktop/session]
