@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+DOMAIN=$(tailscale status --json | jq -r ".CertDomains[0]")
+
+tailscale cert --cert-file "99-ts.crt" --key-file "99-ts.key" "$DOMAIN"
+

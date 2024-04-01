@@ -9,6 +9,8 @@ cockpit:
     sudo podman container runlabel --name cockpit-ws RUN quay.io/cockpit/ws
     sudo podman container runlabel INSTALL quay.io/cockpit/ws
     sudo systemctl enable cockpit.service
+    sudo systemctl enable tailscale-cert.timer
+    sudo systemctl start tailscale-cert.service
     echo 'Open Cockpit -> http://localhost:9090'
 
 # Install recommended GNOME extensions

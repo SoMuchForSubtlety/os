@@ -1,0 +1,16 @@
+[Unit]
+Description=Renew Tailscale Cert
+After=network.target
+After=syslog.target
+
+[Service]
+Type=oneshot
+User=root
+Group=root
+WorkingDirectory=/etc/cockpit/ws-certs.d/
+ExecStart=renew-ts-cert
+Restart=on-failure
+RestartSec=5min
+
+[Install]
+WantedBy=multi-user.target
