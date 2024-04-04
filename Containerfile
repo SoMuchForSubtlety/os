@@ -69,8 +69,8 @@ RUN ln -s /usr/lib/opt/google/chrome/google-chrome /usr/bin/google-chrome-stable
 RUN wget https://copr.fedorainfracloud.org/coprs/dusansimic/themes/repo/fedora-"${FEDORA_MAJOR_VERSION}"/dusansimic-themes-fedora-"${FEDORA_MAJOR_VERSION}".repo \
     -O /etc/yum.repos.d/_copr_dusansimic-themes.repo
 # nerd fonts repo
-RUN wget https://copr.fedorainfracloud.org/coprs/bobslept/nerd-fonts/repo/fedora-"${FEDORA_MAJOR_VERSION}"/bobslept-nerd-fonts-fedora-"${FEDORA_MAJOR_VERSION}".repo \
-    -O /etc/yum.repos.d/bobslept-nerd-fonts-fedora-"${FEDORA_MAJOR_VERSION}".repo
+RUN wget https://copr.fedorainfracloud.org/coprs/che/nerd-fonts/repo/fedora-"${FEDORA_MAJOR_VERSION}"/che-nerd-fonts-fedora-"${FEDORA_MAJOR_VERSION}".repo \
+    -O /etc/yum.repos.d/che-nerd-fonts-fedora-"${FEDORA_MAJOR_VERSION}".repo
 
 RUN wget https://copr.fedorainfracloud.org/coprs/ublue-os/staging/repo/fedora-"${FEDORA_MAJOR_VERSION}"/ublue-os-staging-fedora-"${FEDORA_MAJOR_VERSION}".repo -O /etc/yum.repos.d/ublue-os-staging-fedora-"${FEDORA_MAJOR_VERSION}".repo && \
     /tmp/build.sh && \
