@@ -60,7 +60,6 @@
 				"parallel",
 				"patch",
 				"podman-compose",
-				"podman-plugins",
 				"poetry",
 				"postgresql",
 				"powerline-fonts",
@@ -109,7 +108,9 @@
 	},
 	"39": {
 		"include": {
-			"os": []
+			"os": [
+				"podman-plugins"
+			]
 		},
 		"exclude": {
 			"os": []
