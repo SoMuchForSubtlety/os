@@ -2,18 +2,18 @@ name: Build and Push Image
 on:
   push:
     branches:
-      - 'custom'
+      - "custom"
   schedule:
-    - cron: '00 01 * * *'  # 10:00am everyday
+    - cron: "00 01 * * *" # 10:00am everyday
   merge_group:
   pull_request:
     branches:
       - custom
     paths-ignore:
-      - '**.md'
+      - "**.md"
   workflow_dispatch:
 env:
-    IMAGE_REGISTRY: ghcr.io/${{ github.repository_owner }}
+  IMAGE_REGISTRY: ghcr.io/${{ github.repository_owner }}
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
@@ -32,16 +32,12 @@ jobs:
       matrix:
         image_flavor: [main, nvidia]
         base_name: [os]
-        major_version: [39, 40]
+        major_version: [40]
         include:
-          - major_version: 39
+          - major_version: 40
             is_latest_version: true
             is_stable_version: true
             is_gts_version: true
-          - major_version: 40
-            is_latest_version: false
-            is_stable_version: false
-            is_gts_version: false
     steps:
       - name: Checkout
         uses: actions/checkout@v4

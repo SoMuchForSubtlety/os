@@ -4,8 +4,8 @@
  Name=Visual Studio Code
  Comment=Code Editing. Redefined.
  GenericName=Text Editor
--Exec=/usr/share/code/code --unity-launch %F
-+Exec=/usr/share/code/code --unity-launch %F --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto
+-Exec=/usr/share/code/code %F
++Exec=/usr/share/code/code %F --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto
  Icon=vscode
  Type=Application
  StartupNotify=false

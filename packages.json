@@ -106,24 +106,12 @@
 			]
 		}
 	},
-	"39": {
-		"include": {
-			"os": [
-				"podman-plugins"
-			]
-		},
-		"exclude": {
-			"os": []
-		}
-	},
 	"40": {
 		"include": {
 			"os": []
 		},
 		"exclude": {
-			"os": [
-				"podman-plugins"
-			]
+			"os": []
 		}
 	}
 }
