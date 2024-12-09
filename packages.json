@@ -68,6 +68,8 @@
         "pre-commit",
         "pulseaudio-utils",
         "python-argcomplete",
+        "python3-debug",
+        "python3-devel",
         "python3-pip",
         "python3",
         "qemu-char-spice",

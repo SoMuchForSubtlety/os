@@ -44,11 +44,8 @@ ARG TARGET_BASE="${TARGET_BASE:-os}"
 # RUN rm /usr/bin/open-lens
 # RUN ln -s /usr/lib/opt/OpenLens/open-lens /usr/bin/open-lens
 COPY --from=cgr.dev/chainguard/dive:latest /usr/bin/dive /usr/bin/dive
-COPY --from=cgr.dev/chainguard/flux:latest /usr/bin/flux /usr/bin/flux
 COPY --from=cgr.dev/chainguard/helm:latest /usr/bin/helm /usr/bin/helm
 COPY --from=cgr.dev/chainguard/ko:latest /usr/bin/ko /usr/bin/ko
-COPY --from=cgr.dev/chainguard/pulumi:latest /usr/bin/pulumi /usr/bin/pulumi
-COPY --from=cgr.dev/chainguard/pulumi:latest /usr/bin/pulumi-language-nodejs /usr/bin/pulumi-language-nodejs
 
 RUN --mount=type=cache,dst=/var/cache/rpm-ostree \
     --mount=type=bind,from=ctx,source=/,target=/ctx \
