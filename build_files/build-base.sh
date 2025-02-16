@@ -25,7 +25,7 @@ rsync -rvK /ctx/system_files/ /
 /ctx/build_files/cleanup.sh
 /ctx/build_files/image-info.sh
 /ctx/build_files/workarounds.sh
-/ctx/build_files/apply-patches.sh
+# /ctx/build_files/apply-patches.sh
 /ctx/build_files/install/install_flux.sh
 /ctx/build_files/install/install_pulumi.sh
 /ctx/build_files/completions.sh
